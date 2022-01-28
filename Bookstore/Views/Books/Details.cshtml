@@ -1,0 +1,56 @@
+﻿@model Book
+
+@{
+    ViewData["Title"] = "Book details";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="card mb-12">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-secondary">
+                        <p class="card-text">
+                            <h5 class="card-title">
+                                @Model.Name
+                            </h5>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="@Model.ImageURL" width="100%" alt="@Model.Name">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">@Model.Description</p>
+                        <p class="card-text">
+                            <b>PublishingHouse: </b>
+                            <a asp-controller="PublishingHouses" asp-action="Details" asp-route-id="@Model.PublishingHouseId">
+                                @Model.PublishingHouse.Name
+                            </a>
+                        </p>
+                        <p class="card-text">
+                            <b>Author: </b>
+                            <a asp-controller="Authors" asp-action="Details" asp-route-id="@Model.PublishingHouseId">
+                                @Model.Author.FullName
+                            </a>
+                        </p>
+                        <p class="card-text"><b>Category: </b>@Model.BookCategory</p>
+                        <p class="card-text"><b>Realease Date: </b>@Model.ReleaseDate.ToString("dd MMM yy")</p>
+                        <p class="card-text"><b>Number Of Pages: </b>@Model.NumberOfPages</p>
+                        <p class="card-text"><b>Price: </b>@Model.Price</p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card-footer">
+                        <p class="card-text">
+                            <a class="btn btn-outline-primary float-right" asp-action="Index">
+                                Back to List
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
